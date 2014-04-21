@@ -1,0 +1,559 @@
+body{
+    padding-top: 51px;
+}
+.brdr{
+    border: 1px solid;
+}
+
+/* Global CSS */
+.inputStyleIcon{
+    position: relative;
+}
+.inputStyleIcon.inputleft .form-control{
+    padding-left: 42.5px;
+}
+.inputStyleIcon.inputright .form-control{
+    padding-right: 42.5px;
+}
+.inputStyleIcon.inputleft .form-control-feedback,.inputStyleIcon.inputright .form-control-feedback  {
+    color: #3C763D;
+    display: block;
+    font-weight: 400;
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 34px;
+}
+.inputleft .form-control-feedback{
+    left: 0;
+}
+.inputright .form-control-feedback{
+    right: 0;
+}
+
+.ftre-style1-link{
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#6C6E7A), color-stop(0.47, #6C6E7A), color-stop(0.47, #626470), to(#626470));
+    background: -webkit-linear-gradient(#6C6E7A 0%, #6C6E7A 47%, #626470 47%, #626470 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#6C6E7A), color-stop(47%, #6C6E7A), color-stop(47%, #626470), to(#626470 100%) repeat scroll 0 0 rgba(0, 0, 0,));
+    background: -webkit-linear-gradient(#6C6E7A 0%, #6C6E7A 47%, #626470 47%, #626470 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(#6C6E7A 0%, #6C6E7A 47%, #626470 47%, #626470 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.4em;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 0 60px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+.ftre-style1-link:hover,.ftre-style1-link:focus{
+    color: #8e9098;
+}
+.ftre-style1-link,.ftre-style1-link:hover,.ftre-style1-link:focus{
+    outline: none;
+    text-decoration: none;
+}
+.ftre-style1-link:before, .ftre-style1-link:after {
+    background: url(http://d2qcctj8epnr7y.cloudfront.net/images/jayson/ribbonEndBanner.png) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    content: " ";
+    display: block;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    width: 57px;
+}
+.ftre-style1-link:after {
+    background-position: right center;
+    right: 0;
+}
+.ftre-style1-link:before {
+    background-position: left center;
+    left: 0;
+}
+/* Index Second Level */
+.section-wrap-all{
+    position: relative;
+    background: #F0F0F0;
+}
+.wrap-scndLevel-2{
+    border-bottom: 2px solid #D4D4D4;
+    padding-bottom: 10px;
+    margin: 20px 0 40px;
+}
+
+/* Search Job Result */
+.wrap-SearchJobRslt{
+    position: relative;
+}
+
+/* Footer */
+.panel-footer {
+    font-size:11px;
+}
+.panel-footer .credits {
+    margin-left:15px;
+}
+
+/* ------------ Using Col-lg-6 ------------- */
+.wrapContFtr{
+    background:#FFFFFF;
+    border: 1px solid #C1CCD4;
+    border-radius: 4px;
+    padding: 0;
+    position: relative;
+    vertical-align: top;
+}
+.wrapContFtr > .ribbonS1 {
+    background: url(http://d2qcctj8epnr7y.cloudfront.net/images/jayson/joinUsribbonDiag.png) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 77px;
+    position: absolute;
+    right: -5px;
+    top: -6px;
+    width: 76px;
+    z-index: 100;
+}
+.wrapContFtr > .ribbonS1 span {
+    display: none;
+}
+/* 2nd section of feature */
+.wrapContFtr > header {
+    border-bottom: 1px solid #EAEAEA;
+    margin: 0;
+    padding: 0;
+}
+.wrapContFtr > header .ftrHeader-link {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: block;
+    height: 75px;
+    padding: 20px 26px;
+    text-rendering: optimizelegibility;
+    -webkit-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+}
+.wrapContFtr > header .ftrHeader-link:hover{
+    background: #eaeaea;
+    text-decoration: none;
+}
+.wrapContFtr > header .avatar {
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+}
+.wrapContFtr > header .avatar img {
+    border-radius: 4px;
+    display: block;
+    height: 39px;
+    width: 39px;
+}
+.wrapContFtr > header .tlteContent h2,.wrapContFtr > header .tlteContent h3{
+    margin: 0;
+}
+.wrapContFtr > header h2 {
+    color: #343131;
+    font-size: 1.8em;
+    line-height: normal;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrapContFtr > header h3 {
+    color: #5D5D5D;
+    font-size: 1.2em;
+    line-height: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 3rd section of feature */
+.wrapContFtr > .imgFtr {
+    height: 150px;
+    overflow: hidden;
+}
+/* 4th section of feature */
+.wrapContFtr > .contentDescFtrMain {
+    background: url(http://d2qcctj8epnr7y.cloudfront.net/images/jayson/texturePaper.jpg) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-box-shadow: 0 0 2px 2px #FFFFFF inset;
+    box-shadow: 0 0 2px 2px #FFFFFF inset;
+    padding: 20px;
+}
+.wrapContFtr > .contentDescFtrMain .infoChild {
+    border-top: 1px solid #EAEAEA;
+    padding: 5px 0 15px;
+}
+.wrapContFtr > .contentDescFtrMain .infoChild h3 {
+    color: #5D5D5D;
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    height: 17px;
+    line-height: 21px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.wrapContFtr > .contentDescFtrMain .infoChild li {
+    float: left;
+    font-size: 1.2em;
+    margin: 0 15px 5px 0;
+}
+.wrapContFtr > .contentDescFtrMain .infoChild li a {
+    color: #5D5D5D;
+}
+.wrapContFtr > .contentDescFtrMain .infoChild li a i, .wrapContFtr > .infoChild li a i:hover{
+    outline: medium none;
+    padding-left: 5px;
+    text-decoration: none;
+}
+.wrapContFtr > .contentDescFtrMain footer {
+    border-top: 1px solid #EAEAEA;
+    padding-top: 20px;
+}
+.wrapContFtr > .contentDescFtrMain footer .location {
+    background: url("https://d3levm2kxut31z.cloudfront.net/assets/team/pin-30751481d11a086afe302129212164ca.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #5D5D5D;
+    float: left;
+    font-family: "MuseoSans-700";
+    font-size: 1.1em;
+    line-height: 23px;
+    overflow: hidden;
+    padding-left: 25px;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 200px;
+}
+.wrapContFtr > .contentDescFtrMain footer .more-members {
+    background: none repeat scroll 0 0 #EAEAEA;
+    border: 1px solid #EAEAEA;
+    border-radius: 4px;
+    float: right;
+    font-size: 11px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    width: 26px;
+}
+.wrapContFtr > .contentDescFtrMain footer .members {
+    float: right;
+    margin-right: 10px;
+    padding: 0;
+}
+.wrapContFtr > .contentDescFtrMain footer .members li {
+    float: left;
+    margin-left: 10px;
+}
+.wrapContFtr > .contentDescFtrMain footer .members li a {
+    border-radius: 4px;
+    display: block;
+    height: 26px;
+    overflow: hidden;
+    width: 26px;
+}
+.wrapContFtr > .contentDescFtrMain footer .members li a img {
+    height: 26px;
+    width: 26px;
+}
+.ftrsMarg{
+    margin-bottom: 20px;
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* ------------------- Second Page ----------------------- */
+/* Page 2 css */
+.wrapPage2All{
+    background:url('http://subtlepatterns.com/patterns/binding_dark.png') repeat scroll 0 0 rgba(0,0,0,0);
+    padding: 40px 0 0;
+}
+/* First level Section */
+.margDown{
+    margin-bottom: 60px;
+}
+.pageTitle{
+    color: #fff;
+}
+.com-value{
+    color: #fff;
+    font-weight: bold;
+}
+.com-desc{
+    color:#fff;
+}
+/* Second Level Section */
+.wrapSecondSectn{
+    background: #f0f0f0;
+    padding: 40px;
+}
+.margNgtvUp{
+    margin-top: -80px;
+}
+.whteS1{
+    background: #fff;
+    border: 1px solid rgba(86, 61, 124, 0.2);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.bckgrnds1{
+    background: url("http://d2qcctj8epnr7y.cloudfront.net/images/jayson/texturePaper.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    min-height: 170px;
+    padding-top: 20px;
+}
+.bckgrnds1 h3{
+    color: #333;
+    margin-top: 0;
+}
+.bckgrnds1:hover h3{
+    color: #2a6496;
+}
+.bckgrnds1:hover p:first-child{
+    color: #428BCA;
+}
+.bckgrnds1 p:last-child{
+    color: #333;
+}
+p.team {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.team-logo {
+    margin-right: 5px;
+    width: 20px;
+}
+/* Right Content */
+.rght4s1{
+    padding: 40px 15px 0;
+}
+.rght4s1 .location {
+    text-transform: uppercase;
+}
+.navbar-inverse {
+    background-color: #424141;
+    border-color: #080808;
+}
+/* ------------------------ Third Page ------------------------ */
+.thirdPadTop{
+    padding-top: 30px;
+}
+.cntrContnt{
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.wrapHeaderThird{
+    background: #F4F4F4;
+    border-radius: 4px;
+}
+.thirdPaddMarg{
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.thirdPaddMarg:first-child{
+    margin-bottom: 0;
+}
+.position{
+    color:#737CA1;
+}
+.other-opp{
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-radius: 4px;
+    padding: 10px;
+}
+.other-opp a {
+    color: #777777;
+    font-size: 11px;
+    margin-right: 10px;
+}
+/* Team Header */
+.team-header{
+    background: url("https://d3levm2kxut31z.cloudfront.net/assets/premium-teams/pattern-9b343c69d49d77de7c574865c9e6a4c9.png") repeat scroll 0 0 #5eb0de;
+    padding: 0 40px;
+    min-height: 105px;
+    margin:0 20px;
+}
+.team-header .team-logo {
+    background: none repeat scroll 0 0 #FFFFFF;
+    -webkit-box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px 0;
+}
+.team-header .team-logo img {
+    border-radius: 6px;
+    display: block;
+    height: 65px;
+}
+.team-header h1{
+    color: #FFFFFF;
+    margin-top: 35px;
+}
+.team-header .follow-team {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    font-size: 1.4em;
+    line-height: 35px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.team-header .connections {
+    padding-top: 20px;
+}
+.team-header .connections .url {
+    background-position: 0 0;
+}
+.team-header .connections .twitter {
+    background-position: -28px 0;
+}
+.team-header .connections .facebook {
+    background-position: -58px 0;
+}
+.team-header .connections .github {
+    background-position: -88px 0;
+}
+.team-header .connections a {
+    background: url("https://d3levm2kxut31z.cloudfront.net/assets/team/team-links-6f566cf3fb55332a25c2d35678975a09.png") no-repeat scroll left top rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    display: block;
+    font-size: 0;
+    height: 29px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 29px;
+}
+.margTopFllw{
+    padding-top: 20px;
+}
+.join-us-banner {
+    position: relative;
+    color: rgb(255, 255, 255);
+    padding-top: 7px;
+    height: 50px;
+    background: #333;
+    width: 100%;
+}
+.join-us-banner:before{content:" ";width:0;height:0;border-top:20px solid #000;border-left:20px solid transparent;bottom:-20px;left:0px;position:absolute}
+.join-us-banner:after{content:" ";width:0;height:0;border-top:20px solid #000;border-right:20px solid transparent;bottom:-20px;right:0px;position:absolute}
+.join-us-banner p {
+    font-size: 1em;
+    margin: 0px auto;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color:#999;
+    padding: 0 10px;
+}
+.join-us-banner p i{
+    color: #fff;
+}
+/* Section Details */
+.wrapAllSectionThird{
+    background: #fff;
+    margin: 0 20px;
+}
+.secsMarg{
+    margin-bottom: 40px;
+}
+.team-details{
+    padding: 30px 30px 0;
+}
+.team-details .switch-section p {
+    font-size: 1.2em;
+    line-height: 24px;
+    text-align: center;
+}
+.team-details .switch-section {
+    border-bottom: 5px solid #E5E5E5;
+    padding-bottom: 10px;
+}
+/* Members */
+.members{
+    padding: 0 54px 30px;
+}
+.members ul li {
+    position: relative;
+}
+.members ul li img {
+    border: 5px solid #FFFFFF;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+    height: 120px;
+    margin-bottom: 10px;
+    width: 120px;
+}
+.members ul li span {
+    display: block;
+    font-size: 12px;
+    text-align: center;
+}
+/* Feature Image Section */
+.wrapSectionFeatureImage{
+    background: #363639;
+    min-height: 100px;
+    margin: 0 20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.wrapSectionFeatureImage .member-details {
+    color: #FFFFFF;
+    padding: 40px 70px;
+}
+.wrapSectionFeatureImage .member-details h3 {
+    font-size: 1.8em;
+    margin: 0;
+    overflow: hidden;
+    padding: 6px 0 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrapSectionFeatureImage .member-details a{
+    font-size: 1.3em;
+    color: #FFFFFF;
+    display: block;
+}
+.wrapSectionFeatureImage .member-details a i,.wrapSectionFeatureImage .member-details a:hover i,.wrapSectionFeatureImage .member-details a:focus i{
+    padding-left: 5px;
+    text-decoration: none;
+}
+.wrapSectionFeatureImage .member-details .about-text {
+    border-top: 5px solid #2B2B2E;
+    border-bottom: 5px solid #2B2B2E;
+    padding: 10px 0;
+}
+.wrapSectionFeatureImage .member-pic {
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+}
+.wrapSectionFeatureImage .member-pic img{
+    display: inline-block;
+}
+.wrapSectionFeatureImage .col-lg-6{
+    padding:0;
+}
+/* Big Headline */
+.big-headline{
+    background: url("https://d3levm2kxut31z.cloudfront.net/assets/premium-teams/pattern-9b343c69d49d77de7c574865c9e6a4c9.png") repeat scroll 0 0 #5eb0de;
+    padding: 40px 50px;
+    margin: 0 20px 20px;
+}
+h3.headline {
+    color: #FFFFFF;
+}
