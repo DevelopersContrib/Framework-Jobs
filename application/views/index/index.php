@@ -20,7 +20,7 @@
                                         <span>Join Us</span>
                                     </a>
                                     <header>
-                                        <a class="ftrHeader-link" href="javascript:void();">
+                                        <a class="ftrHeader-link" href="/site/<?php echo $sites[$i]['domain']?>">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="col-lg-2">
@@ -45,7 +45,7 @@
                                         </a>
                                     </header>
                                     <div class="imgFtr">
-                                        <a href="javascript:void();">
+                                        <a href="/site/<?php echo $sites[$i]['domain']?>">
                                             <img alt="Team-default" src="<?php echo $sites[$i]['image']?>" class="img-responsive">
                                         </a>
                                     </div>
@@ -76,21 +76,26 @@
                                         <footer>
                                             <h4 class="location">Team Members</h4>
                                             <span class="more-members">
-                                                +26
+                                               <?php   $members = $sites[$i]['members'];?>
+                                                +<?php echo count($members)?>
                                             </span>
                                             <ul class="members list-inline">
+                                            <?php 
+                                             
+                                               if (count($members) > 0):
+                                                  $m =0;
+                                                   foreach($members as $mkey=>$mval):
+                                                   if ($m < 3):
+                                            ?>
                                                 <li><a href="javascript:void();" class="record-exit">
-                                                        <img alt="timd" src="https://secure.gravatar.com/avatar/26e169fdf6206a9ca0c300956c7dcdc2?d=https://d3levm2kxut31z.cloudfront.net/assets/blank-mugshot-112e2e92d74b7344b8be3630bbccc5da.png" class="img-responsive">
+                                                        <img alt="<?php echo $mval['firstname']." ".$mval['lastname']?>" src="http://www.contrib.com/img/timthumb.php?src=<?php echo $mval['picture']?>&w=100&h=100" class="img-responsive">
                                                     </a>
                                                 </li>
-                                                <li><a href="javascript:void();" class="record-exit">
-                                                        <img alt="slawosz" src="https://secure.gravatar.com/avatar/c544188078900e5d5976689949177f11?d=https://d3levm2kxut31z.cloudfront.net/assets/blank-mugshot-112e2e92d74b7344b8be3630bbccc5da.png" class="img-responsive">
-                                                    </a>
-                                                </li>
-                                                <li><a href="javascript:void();" class="record-exit">
-                                                        <img alt="jjperezaguinaga" src="https://secure.gravatar.com/avatar/83d1df6d5c943263fa0861c8aaf7d7cb?d=https://d3levm2kxut31z.cloudfront.net/assets/blank-mugshot-112e2e92d74b7344b8be3630bbccc5da.png" class="img-responsive">
-                                                    </a>
-                                                </li>
+                                                   <?php endif;?>
+                                                <?php $m++;?>
+                                                <?php endforeach;?>
+                                              <?php endif;?>  
+                                              
                                             </ul>
                                         </footer>
                                         <div class="clearfix"></div>
@@ -104,22 +109,4 @@
                 </div>
             </div> <!-- /container -->
         </div>
-        <div class="panel-footer">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Discover</a></li>
-                <li><a href="#about">Teams</a></li>
-                <li class="active"><a href="#contact">Jobs</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#sigin">Privacy Policy</a></li>
-                <li><a href="#signup">Terms of Service</a></li>
-            </ul>
-            <div style="clear:both"></div>
-            <p class="credits">Copyright @ 2014 Coder Wall. All rights reserved.</p>
-        </div>
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    </body>
-</html>
+       <?php include ('footer.php')?>

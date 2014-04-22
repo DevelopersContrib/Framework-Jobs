@@ -9,8 +9,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-9 text-right">
-                                    <a href="javascript:void();" class="btn btn-warning">Hiring</a>
-                                    <a href="javascript:void();" class="btn btn-info">Leaderboard</a>
+                                    <a href="javascript:void();" class="btn btn-warning">Login</a>
+                                    <a href="javascript:void();" class="btn btn-info">Signup</a>
                                 </div>
                             </div>
                         </div>

@@ -43,12 +43,11 @@ class ApiModel extends Model {
 }
 	
 	 function getdomain(){
-		$domain = $_SERVER["HTTP_HOST"]."".$_SERVER['REQUEST_URI'];//input sitename without www
-        $domain = $_SERVER["HTTP_HOST"];
-        $domain = str_replace("http://","",$domain);
-    	$domain = str_replace("www.","",$domain);
-    	
-    	return $domain;
+	 	$domain = $_SERVER["HTTP_HOST"]."".$_SERVER['REQUEST_URI'];//input sitename without www
+    $domain = $_SERVER["HTTP_HOST"];
+    $domain = str_replace("http://","",$domain);
+    $domain = str_replace("www.","",$domain);
+    return $domain;
 	}
 
 	function getkey(){
@@ -74,14 +73,85 @@ class ApiModel extends Model {
 		return $info;
    }
    
+   function getcontribprofile($field,$value){
+   	    $url = $this->api_url.'getContribProfile?key='.$this->getkey().'&field='.$field."&value=".$value;
+	    $result = $this->createApiCall($url, 'GET', $this->headers, array());
+	    $data_domain = json_decode($result,true);
+	    $profile = array();
+        if ($data_domain['success']){
+        	$profile['firstname'] =$data_domain['data']['firstname'];
+        	$profile['lastname'] =$data_domain['data']['lastname'];
+        	if ($data_domain['data']['picture']== ""){
+        		$profile['picture'] ="http://d2qcctj8epnr7y.cloudfront.net/sheina/contrib/default_avatar.png";
+        	}else {
+        	    $profile['picture'] ="http://www.contrib.com/uploads/profile/".$data_domain['data']['picture'];
+        	}
+        }else {
+        	$profile['firstname'] = "";
+        	$profile['lastname'] ="";
+        	$profile['picture'] ="";
+        }
+        
+        return $profile;
+   }
+   
+   private function getteammembers($domain){
+   	  $url = $this->api_url.'GetTeamPerDomain?domain_name='.$domain;
+   	  $result = $this->createApiCall($url, 'GET', $this->headers, array());
+      $data = json_decode($result,true);
+      $profile = array();
+       if (count($data['data']) > 0){
+           $m =0;
+           foreach($data['data'] as $mkey=>$mval){
+                
+                	 $profile[$m]['firstname'] = $mval['firstname'];
+                	 $profile[$m]['lastname'] = $mval['lastname'];
+                 	 if ($mval['picture'] == ""){
+                 	 	 $cdata = $this->getcontribprofile('EmailAddress',$mval['email']);
+                 	 	 $profile[$m]['picture'] = $cdata['picture'];
+                 	 }else {
+                	   $profile[$m]['picture'] = "http://manage.vnoc.com/uploads/picture/".$mval['picture'];
+                 	 }
+                 	 $m++;
+                }
+                
+           }         
+       
+       return $profile;                                  
+   }
+   
    function getsites($search = null){
-   	     $sites = array(
+   	
+   	  $url = $this->api_url.'getdomainattributes?domain='.$this->getdomain().'&key='.$this->getkey();
+      $result = $this->createApiCall($url, 'GET', $this->headers, array());
+      $data_domain = json_decode($result,true);
+      
+     $sites = array(
    	     0 => array('domain'=>'jobguide.com','image'=>'http://d2qcctj8epnr7y.cloudfront.net/images/lucille/jobguide.png'),
    	     1 => array('domain'=>'virtualinterns.com','image'=>'http://d2qcctj8epnr7y.cloudfront.net/images/lucille/virtualinterns.png'),
    	     2 => array('domain'=>'staffing.com','image'=>'http://d2qcctj8epnr7y.cloudfront.net/images/lucille/staffing.png'),
    	     3 => array('domain'=>'gatorjobs.com','image'=>'http://d2qcctj8epnr7y.cloudfront.net/images/lucille/gatorjobs.png'),
    	     4 => array('domain'=>'eservices.com','image'=>'http://d2qcctj8epnr7y.cloudfront.net/images/lucille/eservices.png')
    	     );
+      
+      if ($data_domain['success']){
+      	  $data = $data_domain['data'];
+      	  
+      	  if (count($data)>0){
+      	  	
+              for ($l=0;$l<6;$l++){
+              	$num = $l+1;
+              	 if ($data["job_site_$num"]!="" && $data["job_site_$num"]!=""){
+	              	 $sites[$l]['domain'] = str_replace('http://','',$data["job_site_$num"]);
+	              	 $sites[$l]['domain'] = str_replace('www.','',$data["job_site_$num"]);
+	              	 $sites[$l]['image'] = $data["job_site_image_$num"];
+              	 }
+              }	  	
+      	  }
+      }
+      
+    	
+   	    
    	    
    	     for ($i=0;$i<count($sites);$i++){
    	     	    $url = $this->api_url.'getjobsites?domain='.$sites[$i]['domain'].'&key='.$this->getkey();
@@ -93,15 +163,18 @@ class ApiModel extends Model {
 				     	$sites[$i]['jobs']= $val['titles'];
 				     	$sites[$i]['logo']= $val['logo'];
 				     	$sites[$i]['description']= $val['description'];
+				     	$sites[$i]['members']= $this->getteammembers($sites[$i]['domain']);
 			    	}
 			    }else {
 			    	$sites[$i]['ids']= "";
 			     	$sites[$i]['jobs']= "";
 			     	$sites[$i]['logo']= "";
 			     	$sites[$i]['description']= "";
+			     	$sites[$i]['members'] = $this->getteammembers($sites[$i]['domain']);
 			    }
 			    
    	     }
+   	     
    	     return $sites;
    }
    
