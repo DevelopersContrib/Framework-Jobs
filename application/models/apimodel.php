@@ -92,7 +92,9 @@ class ApiModel extends Model {
 	        if ($data_domain['success']){
 	        	$profile['firstname'] =$data_domain['data']['firstname'];
 	        	$profile['lastname'] =$data_domain['data']['lastname'];
-	        	$profile['summary'] =$data_domain['data']['summary'];
+	        	$profile['username'] =$data_domain['data']['username'];
+	        	$profile['summary'] = $data_domain['data']['summary'];
+	        	
 	        	if ($data_domain['data']['picture']== ""){
 	        		$profile['picture'] ="http://d2qcctj8epnr7y.cloudfront.net/sheina/contrib/default_avatar.png";
 	        	}else {
@@ -101,6 +103,7 @@ class ApiModel extends Model {
 	        }else {
 	        	$profile['firstname'] = "";
 	        	$profile['lastname'] ="";
+	        	$profile['username'] ="";
 	        	$profile['picture'] ="";
 	        	$profile['summary'] ="";
 	        }
@@ -125,9 +128,11 @@ class ApiModel extends Model {
 	                	 if (count($cdata)> 0){
 	                	 	  $profile[$m]['picture'] = $cdata['picture'];
 	                 	 	  $profile[$m]['summary'] = $cdata['summary'];
+	                 	 	  $profile[$m]['profile'] = "http://www.contrib.com/people/me/".$cdata['username'];
 	                	 }else {
 	                	 	  $profile[$m]['picture'] = "http://manage.vnoc.com/uploads/picture/".$mval['picture'];
 	                 	 	  $profile[$m]['summary'] = "";
+	                 	 	  $profile[$m]['profile'] = "";
 	                	 }
 	                	 
 	                 	 $m++;
@@ -221,6 +226,7 @@ class ApiModel extends Model {
    	   	   $job['description'] = $data_job['data']['description'];
    	   	   $job['date_posted'] = $data_job['data']['date_posted'];
    	   	   $job['category'] = $data_job['data']['category'];
+   	   	   $job['domain'] = $data_job['data']['domain'];
    	   }
    	   return $job;
    }
@@ -238,7 +244,12 @@ class ApiModel extends Model {
 	   	   	   $job[$i]['description'] = $val['description'];
 	   	   	   $job[$i]['date_posted'] = $val['date_posted'];
 	   	   	   $job[$i]['category'] = $val['category'];
+	   	   	   $job[$i]['summary'] = $this->getFirstPara($val['description']);
 	   	   	   $job[$i]['slug'] = $this->seoUrl($val['title']);
+	   	   	   $job[$i]['domain'] = $val['domain'];
+	   	   	   $job[$i]['domain_title'] = $val['domain_title'];
+	   	   	   $job[$i]['logo'] = $val['domain_logo'];
+	   	   	   $job[$i]['domain_category'] = $val['domain_category'];
 	   	   	   $i++;
         	}
 	    }
@@ -257,6 +268,15 @@ class ApiModel extends Model {
     $string = preg_replace("/[\s_]/", "-", $string);
     return $string;
   }
+  
+   private function getFirstPara($string){
+        $string = substr($string,0, strpos($string, "</dt>")+4);
+        $string = str_replace("<dt>", "", str_replace("<dt/>", "", $string));
+        $string = str_replace("<dl>", "", str_replace("<dl/>", "", $string));
+        $string = strip_tags($string);
+        return $string;
+        
+    }
   
   function getsocials($domain){
   	$social = array();

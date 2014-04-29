@@ -95,7 +95,7 @@
                                        <?php   if (count($members) > 0):?>
                                           <?php    foreach($members as $mkey=>$mval):?>
 	                                        <li>
-	                                            <a href="#tab1">
+	                                            <a href="<?php echo $mval['profile']?>">
 	                                            <img alt="dsiebel" src="http://www.contrib.com/img/timthumb.php?src=<?php echo $mval['picture']?>&w=120&h=120" class="avatar">
 	                                            <span><?php echo $mval['firstname']." ".$mval['lastname']?></span>
 	                                            <span><?php echo $mval['role']?></span>
@@ -113,7 +113,7 @@
                                             <div class="member-details" >
                                                 <h3><?php echo $members[0]['firstname']." ".$members[0]['lastname']?></h3>
                                                 <p class="about-text"><?php echo $members[0]['role']?>. <?php echo $members[0]['summary']?></p>
-                                                <a href="/andygrunwald" data-target-type="team-member profile" class="view-profile record-exit">
+                                                <a href="<?php echo $members[0]['profile']?>" data-target-type="team-member profile" class="view-profile record-exit">
                                                     <i class="fa fa-bullseye"></i>
                                                     View Profile
                                                 </a>
@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="member-pic text-center" >
-                                                <img class="img-responsive" alt="Germany" src="https://d3levm2kxut31z.cloudfront.net/assets/locations/Germany-d410e89a8d592909a36385ae436543bf.jpg">
+                                                <img class="img-responsive" alt="Germany" src="http://d2qcctj8epnr7y.cloudfront.net/uploads/bg-signup-2.jpg">
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="big-headline">
                                 <h3 class="headline">
-                                    <?php echo stripcslashes($info['description'])?>
+                                    Check out our exciting opportunities for internnships and jobs at <?php echo ucfirst($site)?> today. Submit your resume, fill up your profile and get instantly matched!
                                 </h3>
                             </div>
                         </div>
