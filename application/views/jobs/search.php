@@ -4,7 +4,9 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="form-group inputStyleIcon inputleft">
-                                        <input type="text" class="form-control" placeholder="search jobs">
+                                        <form method="post" action="<?php echo BASE_URL?>jobs/search">
+                                        <input type="text" class="form-control" placeholder="search jobs" name="search">
+                                        </form>
                                         <span class="fa fa-search form-control-feedback"></span>
                                     </div>
                                 </div>

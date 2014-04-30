@@ -44,12 +44,14 @@ class ApiModel extends Model {
 }
 	
 	 function getdomain(){
-	 	/*
-		$domain = $_SERVER["HTTP_HOST"]."".$_SERVER['REQUEST_URI'];//input sitename without www
-        $domain = $_SERVER["HTTP_HOST"];
-        $domain = str_replace("http://","",$domain);
-    	$domain = str_replace("www.","",$domain);*/
-    	$domain = "jobguide.com";
+	 	if(defined('ENV')){
+	 	    $domain = "jobguide.com";	
+	 	}else {
+			$domain = $_SERVER["HTTP_HOST"]."".$_SERVER['REQUEST_URI'];//input sitename without www
+	        $domain = $_SERVER["HTTP_HOST"];
+	        $domain = str_replace("http://","",$domain);
+	    	$domain = str_replace("www.","",$domain);
+	 	}
     	return $domain;
 	}
 
@@ -60,7 +62,7 @@ class ApiModel extends Model {
 	function getdomaininfo(){
 		
         $cache = new phpFastCache();    
-	    $info = $cache->get("index_domain_info");
+	    $info = $cache->get("index_domain_info_".$this->getdomain());
         
 	    if($info == null) {
 		    $info = array();
@@ -78,7 +80,7 @@ class ApiModel extends Model {
 		    	$info['account_ga'] = $data_domain['data']['AccountGA'];
 		    	$info['description'] = stripslashes(str_replace('\n','<br>',$info['description']));
 			}
-	        $cache->set("index_domain_info", $info, 3600*24);
+	        $cache->set("index_domain_info_".$this->getdomain(), $info, 3600*24);
         }
         
 		return $info;
@@ -305,6 +307,32 @@ class ApiModel extends Model {
     return $social;
         
   }
+  
+ function searchjobs($domains,$search=null){
+   	    $job = array();
+   	  	$url = $this->api_url.'searchJobs?key='.$this->getkey().'&domains='.urlencode($domains)."&search=".urlencode($search);
+		$result = $this->createApiCall($url, 'GET', $this->headers, array());
+		$data_job = json_decode($result,true);
+        if ($data_job['success']){
+   	   	   $i=0;
+        	foreach ($data_job['data'] as $key=>$val){
+	           $job[$i]['job_id'] = $val['job_id'];
+	   	   	   $job[$i]['title'] = $val['title'];
+	   	   	   $job[$i]['description'] = $val['description'];
+	   	   	   $job[$i]['date_posted'] = $val['date_posted'];
+	   	   	   $job[$i]['category'] = $val['category'];
+	   	   	   $job[$i]['summary'] = $this->getFirstPara($val['description']);
+	   	   	   $job[$i]['slug'] = $this->seoUrl($val['title']);
+	   	   	   $job[$i]['domain'] = $val['domain'];
+	   	   	   $job[$i]['domain_title'] = $val['domain_title'];
+	   	   	   $job[$i]['logo'] = $val['domain_logo'];
+	   	   	   $job[$i]['domain_category'] = $val['domain_category'];
+	   	   	   $i++;
+        	}
+	    }
+   	   
+   	   return $job;
+   }
    
 }
 ?>

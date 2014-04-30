@@ -16,7 +16,7 @@ class Jobs extends Controller {
 		$api = $this->loadModel('ApiModel');
 		$info = $api->getdomaininfo();
 		$job = $api->getjobdetails(null,$site);
-		$sites = $api->getsites();
+		
 		$others_jobs = $api->getotherjobs($site);
 		$socials = $api->getsocials($site);
 		$members = $api->getteammembers($site);
@@ -26,7 +26,7 @@ class Jobs extends Controller {
 		$template->set('info', $info);
 		$template->set('job', $job);
 		$template->set('site', $site);
-		$template->set('sites', $sites);
+		
 		$template->set('other_jobs', $others_jobs);
 		$template->set('social', $socials);
 		$template->set('members', $members);
@@ -77,6 +77,38 @@ class Jobs extends Controller {
 		$template->set('members', $members);
 		$template->render();  
 	}
+	
+	 public function search(){
+		$helper = $this->loadHelper('Url_helper');
+		$input = $this->loadHelper('Input_helper');
+		$search = $input->post('search');
+        $api = $this->loadModel('ApiModel');
+		$info = $api->getdomaininfo();
+		$sites = $api->getsites();
+	    $no_of_site = count($sites);
+	    $in = "";
+	    $i=0;
+        if (count($no_of_site)>0){
+        	foreach ($sites as $key=>$val){
+        		 $in .=  "'".$val['domain']."'";
+        	     if ($i<($no_of_site-1)){
+	           	  $in .= ",";
+	           }
+	           $i++;
+        	}
+        }
+       
+		
+		
+		 $others_jobs = $api->searchjobs($in,$search);
+		 $template = $this->loadView('jobs/joblist');  
+		 $template->set('info', $info);
+		 $template->set('page', 'jobs');
+		 $template->set('site', $api->getdomain());
+		 $template->set('other_jobs', $others_jobs);
+		 $template->render();
+	}
+	
 }
 
 ?>

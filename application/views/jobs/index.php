@@ -57,11 +57,12 @@
                                             </h3>
                                             <ul class="list-inline">
                                                <?php $j = explode(',',$sites[$i]['jobs']);?>
+                                               <?php $h = explode(',',$sites[$i]['ids'])?>
                                                <?php if (count($j)>0):?>
                                                   <?php for ($k=0;$k<count($j);$k++):?>
                                                     <?php if ($k < 2):?>
 	                                                <li>
-	                                                    <a href="javascript:void();">
+	                                                    <a href="<?php echo BASE_URL?>jobs/details/<?php echo seoUrl($j[$k])?>/<?php echo trim($h[$k])?>">
 	                                                        <i class="fa fa-angle-double-right"></i>
 	                                                        <?php echo $j[$k]?>
 	                                                    </a>
@@ -109,4 +110,17 @@
                 </div>
             </div> <!-- /container -->
         </div>
+        <?php 
+    function seoUrl($string) {
+    //Unwanted:  {UPPERCASE} ; / ? : @ & = + $ , . ! ~ * ' ( )
+    $string = strtolower($string);
+    //Strip any unwanted characters
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+  }?>
        <?php include ('footer.php')?>
+       
